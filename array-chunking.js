@@ -1,8 +1,7 @@
 function chunk(array,size){
     let res = [];
-    let start = 0, end = size;
-    for (let i = 0; i < array.length; i+=end) {
-        res.push(array.splice(start,end));
+    for (let i = 0; i < array.length; i+=size) {
+        res.push(array.slice(i,i+size));
     }
     return res;
 }
