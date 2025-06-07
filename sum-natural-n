@@ -1,0 +1,21 @@
+// Sum of all natural numbers from 1 to n
+let n = 5,
+  res = 0;
+//Traditional Javascript Logic using Arrays
+for (let i = 1; i <= n; i++) {
+  res += i;
+}
+console.log("Traditional Javascript Array Result", res);
+// Traditional Array Javascript built in method
+const fillNaturalArr = (n) => {
+  return Array.from({ length: n }, (e, i) => i + 1);
+};
+
+const resAlt = fillNaturalArr(5);
+console.log(
+  "Traditional Javascript Array Built-In Method Result",
+  resAlt.reduce((c, e) => c + e)
+);
+
+//Formula Based Solution
+console.log("Logic Based Result", (n * (n + 1)) / 2);
