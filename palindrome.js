@@ -1,5 +1,30 @@
 let word = "Tenet";
-if(word === "" || word === " ") console.log(invalid)
+
+//Conventional for loop and string based solution ( Case Sensitive)
+let reverseWord = "";
+for (let i = word.length - 1; i >= 0; i--) {
+  reverseWord += word[i];
+}
+console.log("Case Sensitive", reverseWord === word);
+
+//Conventional for loop and string based solution ( Case Insensitive)
+let reverse = "";
+let newWord = word.toLowerCase();
+for (let i = newWord.length - 1; i >= 0; i--) {
+  reverse += newWord[i];
+}
+console.log("Case Insensitive", reverse === newWord);
+
+if (word === "" || word === " ") console.log(invalid);
+//Using every() function
+let check = false;
+function palindrome(letter, index) {
+  return letter === word.toUpperCase().charAt(word.length - index - 1);
+}
+console.log(
+  "Output of every() built in js function",
+  word.toUpperCase().split("").every(palindrome)
+);
 //All solutions are evaluated with case-sensitive conditions
 //Basic Solution
 // let reverseWord = "";
@@ -41,9 +66,3 @@ if(word === "" || word === " ") console.log(invalid)
 //     else check = false;
 // }
 // console.log(check);
-//Using every() function
-let check = false;
-function palindrome(letter,index){
-    return letter === word.toUpperCase().charAt(word.length-index-1);
-}
-console.log(word.toUpperCase().split('').every(palindrome));
