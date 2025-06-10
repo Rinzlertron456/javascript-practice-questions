@@ -1,33 +1,39 @@
-let num = 10;
+//Check whether given number is a palindrome or not. If it contains negative sign, it doesn't count as a palindrome.
+//Because negative numbers are not considered palindromes, we can simply check if the number is negative and return false in that case.
+let num = 121;
 
-//Using built in js methods
-let sign = Math.sign(num);
-num = Math.abs(num);
-const res =
-  sign < 0
-    ? num.toString().split("").reverse().join("") * sign
-    : num.toString().split("").reverse().join("");
-console.log(res);
+//Logic Based Solution on Reversing the Number
+const isPalindromeNumber = (num) => {
+  //Brute force solution
+  //   if (num < 0) return false;
+  //   else {
+  //     let rev = 0,
+  //       tempNum = num;
+  //     while (tempNum > 0) {
+  //       let rem = tempNum % 10;
+  //       rev = rev * 10 + rem;
+  //       tempNum = Math.floor(tempNum / 10);
+  //     }
+  //     return rev === num;
+  //   }
 
-//Basic Method (Not applicable for negative numbers and numbers ending in 0)
-// let res = 0;
-// while(num>0){
-//     let rem = num%10;
-//     res = res*10 + rem;
-//     num = Math.floor(num/10);
-// }
-// console.log(res)
-//Enhanced Method
-// let res = 0;
-// if(num<0) num = Math.abs(num);
-// while ( num>0 ){
-//     let rem = num%10;
-//     res = res*10 + rem;
-//     num = Math.floor(num/10);
-// }
-// console.log(res*-1);
-//Using String Methods (Advanced )
-// let sign = Math.sign(num);
-// num = Math.abs(num);
-// console.log(num.toString().split('').reverse().join('')*sign);
-//Slight modification for non-negative numbers ending in 0 ( if you want exact reversal of numbers when asked)
+  // Optimized solution
+  let tempNum = num,
+    rev = 0;
+  while (tempNum > 0) {
+    let rem = tempNum % 10;
+    rev = rev * 10 + rem;
+    tempNum = Math.floor(tempNum / 10);
+  }
+  return num === rev;
+};
+
+//Using in built js methods
+const isNumPalindrome = (num) => {
+  return num < 0
+    ? false
+    : num.toString() === num.toString().split("").reverse().join("");
+};
+
+console.log(isPalindromeNumber(num));
+console.log(isNumPalindrome(num));
